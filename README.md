@@ -1,3 +1,2 @@
-# assignment-template
-SD5913 - Assignment template
-
+This progame is about a moving tank, which is contronled by up, down, left and right keys.
+Before run the program, need to install lib in requirements.txt. (pip install requirements.txt). Then run main.py to start the program.

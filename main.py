@@ -2,8 +2,8 @@ import pygame
 
 win_width = 700
 win_height = 500
-bg_color = pygame.Color(0, 0, 0)
-text_color = pygame.Color(255, 0, 0)
+bg_color = pygame.Color(255, 255, 255)
+text_color = pygame.Color(0, 0, 0)
 
 
 class MainGame():
@@ -23,34 +23,20 @@ class MainGame():
         # 初始化我方坦克
         MainGame.my_tank = Tank(200, 300)
         # 设计标题
-        pygame.display.set_caption('坦克大战1.0')
+        pygame.display.set_caption('war of tank')
         while True:
             # 设置填充色
             MainGame.window.fill(bg_color)
             # 获取事件
             self.getEvent()
-            # 绘制文字
-            MainGame.window.blit(self.getTextSuface('地方坦克剩余%d' % 6), (10, 10))
             # 调用坦克显示的方法
             MainGame.my_tank.displayTank()
             pygame.display.update()
 
     # 结束游戏
     def endGame(self):
-        print('拜拜了您勒')
+        print('exit')
         exit()
-
-    # 左上角文字的绘制
-    def getTextSuface(self, number):
-        # 查看所有的字体
-        # print('pygame.font.get_fonts()')
-        # 初始化字体模块
-        pygame.font.init()
-        # 获取字体Font对象
-        font = pygame.font.SysFont('华文行楷', 18)
-        # 绘制文字信息
-        textSurface = font.render(number, True, text_color)
-        return textSurface
 
     # 获取事件
     def getEvent(self):
@@ -67,29 +53,29 @@ class MainGame():
                 if event.key == pygame.K_LEFT:
                     MainGame.my_tank.direction = 'L'
                     MainGame.my_tank.move()
-                    print('左移')
+                    print('left')
                 elif event.key == pygame.K_RIGHT:
                     MainGame.my_tank.direction = 'R'
                     MainGame.my_tank.move()
-                    print('右移')
+                    print('right')
                 elif event.key == pygame.K_UP:
                     MainGame.my_tank.direction = 'U'
                     MainGame.my_tank.move()
-                    print('上移')
+                    print('up')
                 elif event.key == pygame.K_DOWN:
                     MainGame.my_tank.direction = 'D'
                     MainGame.my_tank.move()
-                    print('下移')
+                    print('down')
 
 
 class Tank():
     # 距离上，左
     def __init__(self, top, left):
         # 保存加载的图片
-        self.images = {'U': pygame.image.load('img/image.png'),
-                       'D': pygame.image.load('img/image.png'),
-                       'L': pygame.image.load('img/image.png'),
-                       'R': pygame.image.load('img/image.png')}
+        self.images = {'U': pygame.image.load('img/tank-up.png'),
+                       'D': pygame.image.load('img/tank-down.png'),
+                       'L': pygame.image.load('img/tank-left.png'),
+                       'R': pygame.image.load('img/tank-right.png')}
         # 方向
         self.direction = 'U'
         # 根据当前图片的方向获取图片 surface
